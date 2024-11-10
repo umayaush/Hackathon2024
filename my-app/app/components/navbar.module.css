@@ -1,7 +1,7 @@
 /* src/app/navbar.module.css */
 
 .navbar {
-    background-color: #F4F3F2;
+    background-color: #F8EDEB;
     padding: 1rem;
   }
   
@@ -16,7 +16,7 @@
   }
   
   .navItem {
-    color: #4C594A;
+    color: #000000;
     margin-right: 10px;
     margin-top: 5px;
   }
@@ -30,8 +30,8 @@
   
   .navItem a:hover {
     text-decoration: none;
-    background-color: #4C594A;
+    background-color: #D8E2DC;
     font-weight: bold;
-    color: #DEDBD2;
+    color: #000000;
   }
   

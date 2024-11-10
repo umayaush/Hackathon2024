@@ -23,7 +23,9 @@ function Login() {
        
         <div className={styles['login-links']}>
           <a href="#forgot-password">Forgot password?</a>
-          <a href="#register">New User? Register Here</a>
+          <Link href="./newuser">
+  <button className={styles['new-user-button']}>New User? Register Here</button>
+</Link>
         </div>
       </div>
     </div>

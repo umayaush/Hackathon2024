@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 // import PhraseCard from '../components/PhraseCard';
 import PhraseGrid from '../components/PhraseGrid';
+import Searchbar from '../components/Searchbar';
 
 export default function Page() {
     const phrases = [
@@ -22,6 +23,7 @@ export default function Page() {
             <Navbar />
             <main>
                 <h1>DASHBOARD</h1>
+                <Searchbar />
                 <div>
                     <PhraseGrid phrases={phrases} />
                 </div>

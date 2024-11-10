@@ -21,6 +21,7 @@ const PhraseCard = ({ phrase, meaning }) => {
         border: '1px solid #ccc',
         padding: '10px',
         borderRadius: '5px',
+        borderColor: '#000000',
         margin: '10px',
         maxWidth: '300px',
         backgroundColor: '#FCD5CE',

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-const PhraseCard = ({ phrase, meaning }) => {
+const PhraseCard = ({ phrase, meaning, context, category, openModal }) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
   const toggleFavourite = (e) => {
@@ -10,13 +10,9 @@ const PhraseCard = ({ phrase, meaning }) => {
     setIsFavourite((prevState) => !prevState);
   };
 
-  const handleCardClick = () => {
-    alert(`Card for "${phrase}" clicked!`);
-  };
-
   return (
     <div
-      onClick={handleCardClick}
+      onClick={() => openModal({ phrase, meaning, context, category })}
       style={{
         border: '1px solid #ccc',
         padding: '10px',
@@ -44,7 +40,6 @@ const PhraseCard = ({ phrase, meaning }) => {
           marginTop: '10px',
         }}
       >
-
         <img
           src={isFavourite ? '/icons/filled_bookmark.png' : '/icons/bookmark.png'}
           alt="Favourite"
@@ -54,7 +49,6 @@ const PhraseCard = ({ phrase, meaning }) => {
             marginRight: '5px',
           }}
         />
-
       </button>
     </div>
   );

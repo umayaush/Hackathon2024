@@ -3,12 +3,12 @@
 import React from 'react';
 import PhraseCard from './PhraseCard';
 
-const PhraseGrid = ({ phrases }) => {
+const PhraseGrid = ({ phrases, openModal }) => {
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',                  // 4 columns -- can change as needed
+        gridTemplateColumns: 'repeat(4, 1fr)',                  
         gap: '25px',
         paddingLeft: '25px'
       }}
@@ -18,9 +18,11 @@ const PhraseGrid = ({ phrases }) => {
           key={index}
           phrase={phraseObj.phrase}
           meaning={phraseObj.meaning}
+          context={phraseObj.context}  
+          category={phraseObj.category} 
+          openModal={openModal}                   // passing openModal here
         />
       ))}
-      
     </div>
   );
 };

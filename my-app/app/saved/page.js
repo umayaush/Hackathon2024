@@ -36,11 +36,10 @@ import PhraseGrid from '../components/PhraseGrid';
 
 const SavedPage = () => {
   const [savedPhrases, setSavedPhrases] = useState([
-    { phrase: 'Example 1', meaning: 'Meaning of example 1' },
-    { phrase: 'Example 2', meaning: 'Meaning of example 2' },
-    { phrase: 'Example 3', meaning: 'Meaning of example 3' },
-    { phrase: 'Example 4', meaning: 'Meaning of example 4' },
-    { phrase: 'Example 5', meaning: 'Meaning of example 5' },
+    { phrase: 'Example 1', meaning: 'Meaning of example 1', category: 'academic' },
+    { phrase: 'Example 2', meaning: 'Meaning of example 2', category: 'social' },
+    { phrase: 'Example 3', meaning: 'Meaning of example 3', category: 'food' },
+    { phrase: 'Example 4', meaning: 'Meaning of example 4', category: 'technology' },
              // sql will probably handle this, but these are just placeholders
   ]);
 

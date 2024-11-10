@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import PhraseGrid from '../components/PhraseGrid';
 import Searchbar from '../components/Searchbar';
 import Filter from '../components/Filter';
+import Modal from '../components/Modal'; 
 
 export default function Dashboard() {
     const [allPhrases, setAllPhrases] = useState([]);
@@ -32,27 +33,44 @@ export default function Dashboard() {
         setFilter(selectedFilter === filter ? "all" : selectedFilter);
     };
 
-    const filteredPhrases = allPhrases.filter((phrase) => {
-        if (filter === "all") return true;
-        return phrase.category === filter;
-    });
+  const filteredPhrases = allPhrases.filter((phrase) => {
+    if (filter === "all") return true;
+    return phrase.category === filter;
+  });
 
-    return (
-        <div>
-            <Navbar />
-            <main>
-                <h1>DASHBOARD</h1>
-                <Searchbar />
+  const openModal = (phrase) => {
+    setSelectedPhrase(phrase);
+    setIsModalOpen(true);
+  };
 
-                <Filter
-                    filters={filters}
-                    onFilterChange={handleFilterChange}
-                    activeFilter={filter}
-                />
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPhrase(null);
+  };
 
-                <PhraseGrid phrases={filteredPhrases} />
-            </main>
-        </div>
-    );
+  return (
+    <div>
+      <Navbar />
+      <main>
+        <h1>DASHBOARD</h1>
+        <Searchbar />
+        <Filter
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          activeFilter={filter}
+        />
+        <PhraseGrid phrases={filteredPhrases} openModal={openModal} />
+
+        {/* add Modal component */}
+        <Modal
+          isOpen={isModalOpen}
+          closeModal={closeModal}
+          phrase={selectedPhrase?.phrase}
+          meaning={selectedPhrase?.meaning}
+          context={selectedPhrase?.context}
+          category={selectedPhrase?.category}
+        />
+      </main>
+    </div>
+  );
 }
-

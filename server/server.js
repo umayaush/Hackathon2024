@@ -9,8 +9,14 @@ const PORT = 8080;
 app.use(cors()); 
 app.use(express.json()); 
 
-// Create an in-memory SQLite database
-const db = new sqlite3.Database(':memory:');
+// Use a file-based SQLite database instead of an in-memory one
+const db = new sqlite3.Database('../SQL_Scripts/phrasedb.sqlite', (err) => {
+    if (err) {
+        console.error("Error opening database:", err);
+    } else {
+        console.log("Connected to the phrasedb.sqlite database.");
+    }
+});
 
 // Read the SQL file and load it into SQLite
 fs.readFile("../SQL_Scripts/phrasedb.sql", "utf8", (err, data) => {
@@ -31,18 +37,41 @@ fs.readFile("../SQL_Scripts/phrasedb.sql", "utf8", (err, data) => {
     });
 });
 
+// Login endpoint
 app.post("/api/login", (req, res) => {
     const { email, password } = req.body;
+
+    // Check if the email and password exist in the database
+    db.get("SELECT * FROM USERS WHERE user_email = ? AND user_password = ?", [email, password], (err, row) => {
+        if (err) {
+            res.status(500).json({ message: "Internal server error" });
+            return;
+        }
+        
+        if (row) {
+            res.json({ message: "Login successful" });
+        } else {
+            res.status(401).json({ message: "Invalid email or password" });
+        }
+    });
+});
+
+// Signup endpoint
+app.post("/api/newuser", (req, res) => {
+    const { name, email, password } = req.body;
+    
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
   
-    // SQL query to find the user by email and check the password
-    db.get("SELECT * FROM users WHERE email = ?", [email], (err, row) => {
+    // Insert new user into the USERS table
+    const query = "INSERT INTO USERS (user_email, user_password) VALUES (?, ?)";
+    db.run(query, [email, password], function(err) {
       if (err) {
-        return res.status(500).json({ success: false, message: "Database error" });
+        console.error("Error inserting user:", err);
+        return res.status(500).json({ message: "Error registering user" });
       }
-      if (!row || row.password !== password) {
-        return res.status(401).json({ success: false, message: "Invalid email or password" });
-      }
-      return res.json({ success: true, message: "Login successful" });
+      res.status(201).json({ message: "User registered successfully" });
     });
   });
 

@@ -7,7 +7,7 @@ ORDER BY category_name;
 -- Query 2: Get all phrases in a specific category
 -- Parameters: category_id
 -- Returns: All phrases belonging to a specified category with their descriptions
-SELECT p.phrase_id, p.phrase, p.phrase_desc p.context, c.category_name
+SELECT p.phrase_id, p.phrase, p.phrase_desc, p.context, c.category_name
 FROM PHRASE p
 JOIN CATEGORY c ON p.category_id = c.category_id
 WHERE c.category_id = 1;  -- Replace 1 with desired category_id

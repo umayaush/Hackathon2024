@@ -6,7 +6,7 @@ export default function Page() {
             <Navbar />
             <main>
                 {/* Title */}
-                <h1>This is the account settings</h1>
+                <h1>ACCOUNT SETTINGS</h1>
             </main>
         </div>
     );

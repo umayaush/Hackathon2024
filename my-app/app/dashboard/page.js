@@ -3,7 +3,9 @@ import Navbar from '../components/Navbar';
 import PhraseGrid from '../components/PhraseGrid';
 import Searchbar from '../components/Searchbar';
 
+
 export default function Page() {
+
     const phrases = [
         { phrase: 'Example 1', meaning: 'Meaning of example 1' },
         { phrase: 'Example 2', meaning: 'Meaning of example 2' },

@@ -1,63 +1,51 @@
-DROP DATABASE IF EXISTS phrasedb;
-CREATE DATABASE phrasedb;
-USE phrasedb;
+
 
 -- Create Category table
 CREATE TABLE CATEGORY (
-    category_id         INT,
-    category_name       VARCHAR(255)        NOT NULL UNIQUE,
-    category_desc       VARCHAR(255),
+    category_id         INTEGER PRIMARY KEY,
+    category_name       TEXT        NOT NULL UNIQUE,
+    category_desc       TEXT
     
-    CONSTRAINT PK_CATEGORY PRIMARY KEY (category_id)
+    
 );
 
 -- Create Phrase table
 CREATE TABLE PHRASE (
-    phrase_id           INT,
-    category_id         INT                 NOT NULL,
-    phrase              VARCHAR(255)        NOT NULL UNIQUE,
-    phrase_desc         VARCHAR(255),                           -- phrase definition
-    context             VARCHAR(255)        NOT NULL,           -- phrase context
+    phrase_id           INTEGER PRIMARY KEY,
+    category_id         INTEGER                 NOT NULL,
+    phrase              TEXT        NOT NULL UNIQUE,
+    phrase_desc         TEXT,                           -- phrase definition
+    context             TEXT        NOT NULL,           -- phrase context
 
-    CONSTRAINT PK_PHRASE PRIMARY KEY (phrase_id),
-    CONSTRAINT FK_PHRASE_CATEGORY FOREIGN KEY (category_id) 
-        REFERENCES CATEGORY(category_id)
-        ON DELETE CASCADE
+    FOREIGN KEY (category_id) REFERENCES CATEGORY(category_id) ON DELETE CASCADE
 );
 
 -- Create User table
-CREATE TABLE USER (
-    user_id             INT                 AUTO_INCREMENT,
-    user_email          VARCHAR(255)        NOT NULL UNIQUE,
-    user_password       VARCHAR(255)        NOT NULL,
+CREATE TABLE USERS (
+    user_id             INTEGER PRIMARY KEY                AUTOINCREMENT,
+    user_email          TEXT        NOT NULL UNIQUE,
+    user_password       TEXT        NOT NULL
     
-    CONSTRAINT PK_USER PRIMARY KEY (user_id)
+   
 );
 
 -- Create Example table
 CREATE TABLE EXAMPLE (
-    example_id          INT,
-    phrase_id           INT                 NOT NULL,
-    example             VARCHAR(255)        NOT NULL,           -- phrase example
+    example_id          INTEGER PRIMARY KEY,
+    phrase_id           INTEGER                 NOT NULL,
+    example             TEXT        NOT NULL,           -- phrase example
     
-    CONSTRAINT PK_EXAMPLE PRIMARY KEY (example_id),
-    CONSTRAINT FK_EXAMPLE_PHRASE FOREIGN KEY (phrase_id) 
-        REFERENCES PHRASE(phrase_id)
-        ON DELETE CASCADE
+    FOREIGN KEY (phrase_id) REFERENCES PHRASE(phrase_id) ON DELETE CASCADE
 );
 
 -- Create Saved_Phrase table (Bridge table)
 CREATE TABLE SAVED_PHRASE (
-    user_id             INT,
-    phrase_id           INT,
+    user_id             INTEGER,
+    phrase_id           INTEGER,
     
-    CONSTRAINT PK_SAVED_PHRASE PRIMARY KEY (user_id, phrase_id),
-    CONSTRAINT FK_SAVED_PHRASE_USER FOREIGN KEY (user_id) 
-        REFERENCES USER(user_id)
-        ON DELETE CASCADE,
-    CONSTRAINT FK_SAVED_PHRASE_PHRASE FOREIGN KEY (phrase_id) 
-        REFERENCES PHRASE(phrase_id)
-        ON DELETE CASCADE
+    PRIMARY KEY (user_id, phrase_id),
+    FOREIGN KEY (user_id) REFERENCES USERS(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (phrase_id) REFERENCES PHRASE(phrase_id) ON DELETE CASCADE
 );
 
 -- Populate Category table
@@ -131,7 +119,7 @@ INSERT INTO PHRASE (phrase_id, category_id, phrase, phrase_desc, context) VALUES
 (57, 7, 'Bank''s closed', 'A phrase meaning no more money will be spent or available', 'Financial limit');
 
 -- Populate User table
-INSERT INTO USER (user_email, user_password) VALUES
+INSERT INTO USERS (user_email, user_password) VALUES
 ('user1@example.com', 'password1'),
 ('user2@example.com', 'password2'),
 ('user3@example.com', 'password3');

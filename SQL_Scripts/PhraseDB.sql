@@ -41,7 +41,7 @@ CREATE TABLE EXAMPLE (
     example             VARCHAR(255)        NOT NULL,           -- phrase example
     
     CONSTRAINT PK_EXAMPLE PRIMARY KEY (example_id),
-    CONSTRAINT FK_EXAMPLE_PHRASE FOREIGN KEY (expression_id) 
+    CONSTRAINT FK_EXAMPLE_PHRASE FOREIGN KEY (phrase_id) 
         REFERENCES PHRASE(phrase_id)
         ON DELETE CASCADE
 );
@@ -51,11 +51,11 @@ CREATE TABLE SAVED_PHRASE (
     user_id             INT,
     phrase_id           INT,
     
-    CONSTRAINT PK_SAVED_PHRASE PRIMARY KEY (user_id, expression_id),
+    CONSTRAINT PK_SAVED_PHRASE PRIMARY KEY (user_id, phrase_id),
     CONSTRAINT FK_SAVED_PHRASE_USER FOREIGN KEY (user_id) 
         REFERENCES USER(user_id)
         ON DELETE CASCADE,
-    CONSTRAINT FK_SAVED_PHRASE_PHRASE FOREIGN KEY (expression_id) 
+    CONSTRAINT FK_SAVED_PHRASE_PHRASE FOREIGN KEY (phrase_id) 
         REFERENCES PHRASE(phrase_id)
         ON DELETE CASCADE
 );

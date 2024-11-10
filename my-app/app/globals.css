@@ -9,8 +9,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #F8EDEB;
+    --foreground: #171717;
   }
 }
 
@@ -23,4 +23,16 @@ body {
 h1 {
   font-size: 40px;
   padding-left: 40px;
+}
+
+.login-button {
+  width: 250px;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-top: 58px;
+  margin-left: 350px;
+  cursor: pointer;
 }

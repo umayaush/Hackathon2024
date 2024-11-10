@@ -75,6 +75,20 @@ app.post("/api/newuser", (req, res) => {
     });
   });
 
+  // Load phrases endpoint
+  app.get("/api/dashboard", (req, res) => {
+    db.all("SELECT phrase, phrase_desc FROM PHRASE ORDER BY phrase ASC", (err, rows) => {
+        if (err) {
+            console.error("Error fetching phrases:", err);
+            res.status(500).json({ message: "Internal server error" });
+            return;
+        }
+
+        // Send phrases as JSON
+        res.json(rows);
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });

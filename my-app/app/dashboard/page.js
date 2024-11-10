@@ -1,22 +1,13 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import Navbar from '../components/Navbar';
 import PhraseGrid from '../components/PhraseGrid';
 import Searchbar from '../components/Searchbar';
 import Filter from '../components/Filter';
 
 export default function Dashboard() {
-    const allPhrases = [
-        { phrase: 'Example 1', meaning: 'Meaning of example 1', category: 'academic' },
-        { phrase: 'Example 2', meaning: 'Meaning of example 2', category: 'social' },
-        { phrase: 'Example 3', meaning: 'Meaning of example 3', category: 'food' },
-        { phrase: 'Example 4', meaning: 'Meaning of example 4', category: 'technology' },
-        { phrase: 'Example 5', meaning: 'Meaning of example 5', category: 'work' },
-        { phrase: 'Example 6', meaning: 'Meaning of example 6', category: 'daily' },
-        { phrase: 'Example 7', meaning: 'Meaning of example 7', category: 'emotions' },
-    ];
-
+    const [allPhrases, setAllPhrases] = useState([]);
     const [filter, setFilter] = useState("all");
 
     const filters = [
@@ -29,12 +20,16 @@ export default function Dashboard() {
         { name: "Money & Work", value: "work", description: "Phrases and expressions related to jobs, careers, and financial matters." },
     ];
 
+    useEffect(() => {
+        // Fetch phrases from the API
+        fetch("http://localhost:8080/api/dashboard")
+            .then(response => response.json())
+            .then(data => setAllPhrases(data))
+            .catch(error => console.error("Error fetching phrases:", error));
+    }, []);
+
     const handleFilterChange = (selectedFilter) => {
-        if (selectedFilter === filter) {
-            setFilter("all");
-        } else {
-            setFilter(selectedFilter);
-        }
+        setFilter(selectedFilter === filter ? "all" : selectedFilter);
     };
 
     const filteredPhrases = allPhrases.filter((phrase) => {

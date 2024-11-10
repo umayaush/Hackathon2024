@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const PhraseCard = ({ phrase, meaning }) => {
   const [isFavourite, setIsFavourite] = useState(false);
@@ -61,3 +61,5 @@ const PhraseCard = ({ phrase, meaning }) => {
 };
 
 export default PhraseCard;
+
+

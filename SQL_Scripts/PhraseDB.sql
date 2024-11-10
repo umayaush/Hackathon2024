@@ -34,7 +34,7 @@ CREATE TABLE USER (
     CONSTRAINT PK_USER PRIMARY KEY (user_id)
 );
 
--- Create Examples table
+-- Create Example table
 CREATE TABLE EXAMPLE (
     example_id          INT,
     phrase_id           INT                 NOT NULL,

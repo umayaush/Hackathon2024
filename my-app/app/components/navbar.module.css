@@ -27,11 +27,22 @@
 }
 
 .navItem a:hover {
-  border-style: solid;
+  border-style: dashed;
   border-width: 2px;
 
   text-decoration: none;
   background-color: #D8E2DC;
+  border-color: #000000;
+  font-weight: none;
+  color: #000000;
+}
+
+
+.navItem a.active {
+  border-style: solid;
+  border-width: 2px;
+  text-decoration: none;
+  background-color: #D8E2DC; 
   border-color: #000000;
   font-weight: bold;
   color: #000000;

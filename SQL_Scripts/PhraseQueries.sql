@@ -39,8 +39,8 @@ ORDER BY c.category_name, p.phrase;
 SELECT p.phrase_id, p.phrase, p.phrase_desc, c.category_name
 FROM PHRASE p
 JOIN CATEGORY c ON p.category_id = c.category_id
-WHERE p.phrase LIKE '%bussin%'
-   OR p.phrase_desc LIKE '%bussin%';  -- Replace 'bussin' with desired search term
+WHERE p.phrase LIKE '%money%'
+   OR p.phrase_desc LIKE '%money%';  -- Replace 'money' with desired search term
 
 -- Query 6: Add a phrase to the saved table
 -- Parameters: user_id, phrase_id

@@ -22,7 +22,9 @@ function Login() {
       </Link>
        
         <div className={styles['login-links']}>
-          <a href="#forgot-password">Forgot password?</a>
+        <Link href="./forgotpassinput">
+  <button className={styles['forgot-pass-button']}>Forgot Password?</button>
+</Link>
           <Link href="./newuser">
   <button className={styles['new-user-button']}>New User? Register Here</button>
 </Link>

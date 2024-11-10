@@ -1,0 +1,99 @@
+/* Page.module.css */
+
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #F8EDEB; /* Light pink background */
+}
+
+.sidebar {
+    width: 25%;
+    padding: 1rem;
+    background-color: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+.navLink {
+    font-size: 1.2rem;
+    color: #171717;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.activeLink {
+    color: #333;
+    font-weight: bold;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.profileSection {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profileImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #171717;
+}
+
+.profileName {
+    color: #777;
+}
+
+.editButton {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-left: auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputField {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}

@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #F8EDEB;
+}
+
+.mainContent {
+    flex: 1;
+    padding-right: 230px;
+    padding-left: 25px;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.profileSection {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+.profileImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #171717;
+}
+
+.profileName {
+    color: #777;
+}
+
+.editButton {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-left: auto;
+}
+
+.saveButton {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 25px;
+
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputField {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}

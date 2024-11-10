@@ -7,6 +7,7 @@ const cors = require("cors");
 const PORT = 8080;
 
 app.use(cors()); 
+app.use(express.json()); 
 
 // Create an in-memory SQLite database
 const db = new sqlite3.Database(':memory:');
@@ -30,20 +31,20 @@ fs.readFile("../SQL_Scripts/phrasedb.sql", "utf8", (err, data) => {
     });
 });
 
-// Modify the /api/home endpoint to return query results
-app.get("/api/home", (req, res) => {
-    // Query the database
-    db.all("SELECT * FROM CATEGORY", (err, rows) => {
-        if (err) {
-            console.error("Query error:", err);
-            res.status(500).json({ error: "Query failed" });
-            return;
-        }
-
-        // Send the query result as a JSON response
-        res.json({ message: "Query results", data: rows });
+app.post("/api/login", (req, res) => {
+    const { email, password } = req.body;
+  
+    // SQL query to find the user by email and check the password
+    db.get("SELECT * FROM users WHERE email = ?", [email], (err, row) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: "Database error" });
+      }
+      if (!row || row.password !== password) {
+        return res.status(401).json({ success: false, message: "Invalid email or password" });
+      }
+      return res.json({ success: true, message: "Login successful" });
     });
-});
+  });
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);

@@ -77,14 +77,26 @@ app.post("/api/newuser", (req, res) => {
 
   // Load phrases endpoint
   app.get("/api/dashboard", (req, res) => {
-    db.all("SELECT phrase, phrase_desc FROM PHRASE ORDER BY phrase ASC", (err, rows) => {
+    // Modify query to include examples and context
+    const query = `
+        SELECT 
+            p.phrase, 
+            p.phrase_desc, 
+            p.context, 
+            e.example 
+        FROM PHRASE p
+        LEFT JOIN EXAMPLE e ON p.phrase_id = e.phrase_id
+        ORDER BY p.phrase ASC
+    `;
+
+    db.all(query, (err, rows) => {
         if (err) {
             console.error("Error fetching phrases:", err);
             res.status(500).json({ message: "Internal server error" });
             return;
         }
 
-        // Send phrases as JSON
+        // Send phrases along with example and context as JSON
         res.json(rows);
     });
 });

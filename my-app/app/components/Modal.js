@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const Modal = ({ isOpen, closeModal, phrase, meaning, context, category }) => {
+const Modal = ({ isOpen, closeModal, phrase, meaning, context, example }) => {
   if (!isOpen) return null;
 
   return (
@@ -14,7 +14,7 @@ const Modal = ({ isOpen, closeModal, phrase, meaning, context, category }) => {
           <h3>Phrase: {phrase}</h3>
           <p><strong>Meaning:</strong> {meaning}</p>
           <p><strong>Context:</strong> {context}</p>
-          <p><strong>Category:</strong> {category}</p>
+          <p><strong>Example:</strong> {example}</p>
         </div>
       </div>
     </div>

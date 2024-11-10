@@ -17,9 +17,9 @@ const PhraseGrid = ({ phrases, openModal }) => {
         <PhraseCard
           key={index}
           phrase={phraseObj.phrase}
-          meaning={phraseObj.meaning}
+          meaning={phraseObj.phrase_desc}
           context={phraseObj.context}  
-          category={phraseObj.category} 
+          example={phraseObj.example} 
           openModal={openModal}                   // passing openModal here
         />
       ))}

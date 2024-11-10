@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-const PhraseCard = ({ phrase, meaning, context, category, openModal }) => {
+const PhraseCard = ({ phrase, meaning, context, example, openModal }) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
   const toggleFavourite = (e) => {
@@ -12,7 +12,7 @@ const PhraseCard = ({ phrase, meaning, context, category, openModal }) => {
 
   return (
     <div
-      onClick={() => openModal({ phrase, meaning, context, category })}
+      onClick={() => openModal({ phrase, meaning, context, example })}
       style={{
         border: '1px solid #ccc',
         padding: '10px',

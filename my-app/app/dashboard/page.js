@@ -10,6 +10,8 @@ import Modal from '../components/Modal';
 export default function Dashboard() {
     const [allPhrases, setAllPhrases] = useState([]);
     const [filter, setFilter] = useState("all");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedPhrase, setSelectedPhrase] = useState(null);
 
     const filters = [
         { name: "Academic Life", value: "academic", description: "Phrases and expressions commonly used in educational and scholarly settings." },
@@ -68,7 +70,7 @@ export default function Dashboard() {
           phrase={selectedPhrase?.phrase}
           meaning={selectedPhrase?.meaning}
           context={selectedPhrase?.context}
-          category={selectedPhrase?.category}
+          example={selectedPhrase?.example}
         />
       </main>
     </div>

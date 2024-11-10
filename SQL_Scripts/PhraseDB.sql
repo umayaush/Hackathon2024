@@ -4,7 +4,7 @@ USE phrasedb;
 
 -- Create Category table
 CREATE TABLE CATEGORY (
-    category_id         INT                 AUTO_INCREMENT,
+    category_id         INT,
     category_name       VARCHAR(255)        NOT NULL UNIQUE,
     category_desc       VARCHAR(255),
     
@@ -13,7 +13,7 @@ CREATE TABLE CATEGORY (
 
 -- Create Phrase table
 CREATE TABLE PHRASE (
-    phrase_id           INT                 AUTO_INCREMENT,
+    phrase_id           INT,
     category_id         INT                 NOT NULL,
     phrase              VARCHAR(255)        NOT NULL UNIQUE,
     phrase_desc         VARCHAR(255),                           -- phrase definition
@@ -36,7 +36,7 @@ CREATE TABLE USER (
 
 -- Create Examples table
 CREATE TABLE EXAMPLE (
-    example_id          INT                 AUTO_INCREMENT,
+    example_id          INT,
     phrase_id           INT                 NOT NULL,
     example             VARCHAR(255)        NOT NULL,           -- phrase example
     
@@ -46,7 +46,7 @@ CREATE TABLE EXAMPLE (
         ON DELETE CASCADE
 );
 
--- Create Saved_Phrase table (junction table)
+-- Create Saved_Phrase table (Bridge table)
 CREATE TABLE SAVED_PHRASE (
     user_id             INT,
     phrase_id           INT,

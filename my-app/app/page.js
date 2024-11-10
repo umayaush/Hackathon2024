@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 
 
 import Link from "next/link";
+import Login from './login/page'
 export default function Page() {
 
   const [message, setMessage] = useState("Loading");
@@ -22,18 +23,7 @@ export default function Page() {
 
   return (
     <main>
-      {/* Title */}
-      <h1>
-        Welcome to App Name
-      </h1>
-
-      {/* Button (has some Tailwind CSS) */}
-      <Link href="./dashboard">
-        <button className=" bg-rose-400"> 
-          Login
-        </button>
-      </Link>
-      {message}
+      <Login/>
 
     </main>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './page.module.css'; // Import the CSS module
+import Link from "next/link";
 
 function Login() {
   return (
@@ -14,8 +15,12 @@ function Login() {
         <label htmlFor="password">Password</label>
         <input type="password" id="password" placeholder="******" />
         
-        <button className={styles['login-button']}>Sign In</button>
         
+        <Link href="./dashboard">
+        <button className={styles['login-button']}>Sign In</button>
+
+      </Link>
+       
         <div className={styles['login-links']}>
           <a href="#forgot-password">Forgot password?</a>
           <a href="#register">New User? Register Here</a>

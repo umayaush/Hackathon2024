@@ -6,7 +6,7 @@ export default function Page() {
             <Navbar />
             <main>
                 {/* Title */}
-                <h1>This is the dashboard</h1>
+                <h1>This is the saved page</h1>
             </main>
         </div>
     );

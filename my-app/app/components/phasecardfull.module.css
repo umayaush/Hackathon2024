@@ -1,0 +1,56 @@
+
+.word-page {
+    background-color: #f5e7e0; 
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    font-family: Trebuchet MS, sans-serif;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icon {
+    position: absolute;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .save-icon {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .back-icon {
+    top: 10px;
+    right: 10px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  .category {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+  }
+  
+  .definition {
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  .illustration {
+    margin: 20px 0;
+    font-size: 48px; 
+  }
+  
+  .common-uses p {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+  }
+  
